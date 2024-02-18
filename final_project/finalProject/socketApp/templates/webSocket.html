@@ -1,0 +1,17 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="{% static 'scripts/index.js' %}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/index.css' %}">
+    <meta charset="UTF-8">
+    <title>Websocket stuff</title>
+</head>
+<body>
+    <h3><a href="{% url 'renderInfo' %}">Take me to documentation!!!</a></h3>
+    <input type="text" id="messageInput" placeholder="Enter a message (try 'ping')"/>
+    <button onclick="sendMessage()">ping</button>
+    <div id="messages"></div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Info</title>
+</head>
+<body>
+<div>
+    <h1>Information: </h1>
+    <ul>
+        <li>Start the server by going to the project directory root (finalProject) and
+            entering the following command: daphne -p 8000 finalProject.asgi:application</li>
+        <li>socket endpoint (<a href="{% url 'renderSocket' %}">http://127.0.0.1:8000/ws/</a>):<br>
+        This endpoint showcases socket functionality. User can enter any text and send it to the server.<br>
+        The entered text will be displayed on the page along with the server response.<br>
+        The server will respond with a "pong" only if the user sends "ping".</li>
+        <li>Information endpoint (<a href="{% url 'renderInfo' %}">http://127.0.0.1:8000/info/</a>)<br>
+        This endpoint is accessed via the example url. You're already here.</li>
+    </ul>
+</div>
+</body>
+</html>

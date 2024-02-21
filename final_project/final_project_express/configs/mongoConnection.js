@@ -1,3 +1,3 @@
-const mongoConnection = 'mongodb+srv://chef:mynamechef@metadataCluster.vaxxfjq.mongodb.net/testdata?retryWrites=true&w=majority';
+const mongoConnection = 'mongodb+srv://chef:plswork@metadatacluster.xoexvcc.mongodb.net/';
 
 module.exports = mongoConnection;

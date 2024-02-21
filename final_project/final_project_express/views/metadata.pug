@@ -1,0 +1,27 @@
+doctype html
+html
+body
+    ul
+    if Array.isArray(data)
+      h1 Metadata n stuff
+      ul
+        each md in data 
+            h3= md.name 
+            li name: #{md.name}
+            li creation date: #{md.creationDT}
+            li last modified date: #{md.lastModifiedDT} 
+            li last accessed date: #{md.lastAccessedDT}
+            li size: #{md.size}
+            li description: #{md.description}
+            li md id: #{md._id}
+    else 
+        h2 md with id: #{data._id}
+        ul
+            h3= data.name 
+            li name: #{data.name}
+            li creation date: #{data.creationDT}
+            li last modified date: #{data.lastModifiedDT} 
+            li last accessed date: #{data.lastAccessedDT}
+            li size: #{data.size}
+            li description: #{data.description}
+            li md id: #{data._id}

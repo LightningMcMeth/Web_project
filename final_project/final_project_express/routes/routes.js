@@ -3,8 +3,10 @@ const router = express.Router();
 const controller = require('../controllers/controller');
 
 
-//router.get('/new', controller.addMetadataController);
-router.get('/listmd', controller.listAllMetadataController);
-router.get('/:id', controller.getMetadataByIdController);
+router.put('/new', controller.addMetadataController);
+router.get('/list', controller.listAllMetadataController);
+router.put('/update/:id', controller.updateMetadataByIdController);
+router.get('/get/:id', controller.getMetadataByIdController);
+router.delete('/delete/:id', controller.deleteMetadataByIdController);
 
 module.exports = router;

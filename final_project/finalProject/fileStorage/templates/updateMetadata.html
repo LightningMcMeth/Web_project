@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update File Metadata</title>
+</head>
+<body>
+    <h2>Update Metadata for {{ fileName }}</h2>
+    {% if metadata %}
+        <h3>Current Metadata:</h3>
+        <p><strong>Name:</strong> {{ metadata.0.name }}</p>
+        <p><strong>Description:</strong> {{ metadata.0.description }}</p>
+        <p><strong>Size:</strong> {{ metadata.0.size }}</p>
+        <p><strong>Last accessed date:</strong> {{ metadata.0.lastAccessedDT }}</p>
+        <p><strong>Last modified date:</strong> {{ metadata.0.lastModifiedDT }}</p>
+        <p><strong>Creation date:</strong> {{ metadata.0.creationDT }}</p>
+    {% else %}
+        <p>No metadata found for this file.</p>
+    {% endif %}
+
+    <form action="{% url 'updateMetadata' fileName %}" method="post">
+        {% csrf_token %}
+        <label for="description">Enter a new file description:</label>
+        <textarea id="description" name="description"></textarea><br><br>
+        <button type="submit">Update file metadata</button>
+    </form>
+
+    <a href="{% url 'getFileNames' %}">Back to file list</a>
+</body>
+</html>

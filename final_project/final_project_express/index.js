@@ -16,7 +16,3 @@ app.use('/md', routes);
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-//what should I rename the 'gamer' folder to?
-//how do I do the redirection thing?
-//how do I set up CORS?

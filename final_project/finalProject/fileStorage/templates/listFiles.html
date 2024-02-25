@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Files</title>
+</head>
+<body>
+    <h2>List of files</h2>
+    <ul>
+        {% for file in files %}
+            <li>
+                {{ file.name }} --->>> file description {{ file.description }}
+                <a href="{% url 'updateMetadata' file.name %}">
+                    <button>Edit</button>
+                </a>
+                <a href="{% url 'deleteFile' file.name %}" onclick="return confirm('Are you sure you want to delete this file?');">
+                    <button>Delete</button>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'uploadFile' %}">Upload a file</a>
+</body>
+</html>

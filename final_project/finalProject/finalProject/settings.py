@@ -56,7 +56,7 @@ ROOT_URLCONF = 'finalProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'socketApp/templates'],
+        'DIRS': [BASE_DIR / 'socketApp/templates', BASE_DIR / 'fileStorage/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,6 +121,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / 'socketApp/static',
+    BASE_DIR / 'fileStorage/static'
 ]
 
 # Default primary key field type

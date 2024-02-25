@@ -58,24 +58,25 @@ def getListOfFileNames(request):
     storageFolder = os.path.join(settings.BASE_DIR, 'fileStorage/filestorage')
     fileNames = os.listdir(storageFolder)
 
-    files_with_descriptions = []
+    filesWithDescriptions = []
 
     for file in fileNames:
         nameWithoutExtension = os.path.splitext(file)[0]
         response = requests.get(f'http://localhost:3500/md/getByName/{nameWithoutExtension}')
         if response.status_code == 200:
-            metadata_list = response.json()
-            # Assuming the first item in the list is the desired metadata
-            if metadata_list:
-                description = metadata_list[0].get('description', 'No description available')
+            metadataList = response.json()
+
+
+            if metadataList:
+                description = metadataList[0].get('description', 'No description available')
             else:
                 description = 'No description available'
         else:
             description = 'Description not found'
 
-        files_with_descriptions.append({'name': file, 'description': description})
+        filesWithDescriptions.append({'name': file, 'description': description})
 
-    return render(request, 'listFiles.html', {'files': files_with_descriptions})
+    return render(request, 'listFiles.html', {'files': filesWithDescriptions})
 
 
 def updateFileMetadata(request, fileName):

@@ -1,8 +1,11 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Upload file</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/updateUploadMetadata.css' %}">
 </head>
 <body>
     <h2>Upload a file</h2>
@@ -14,8 +17,8 @@
         <label for="file_description">File description:</label>
         <textarea id="fileDescription" name="fileDescription" required></textarea><br><br>
 
-        <label for="file">Choose file:</label>
-        <input type="file" id="file" name="file" required><br><br>
+        <label for="file" class="custom-file-upload">Choose file</label>
+        <input type="file" id="file" name="file"><br><br>
 
         <button type="submit">Upload</button>
     </form>

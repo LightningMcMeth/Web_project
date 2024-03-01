@@ -1,11 +1,14 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>It works I guess</title>
+    <title>Success</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/listFiles.css' %}">
 </head>
 <body>
-<h1>Stuff works👍</h1>
+<h1>Success!!</h1>
 <a href="{% url 'getFileNames' %}">Back to file list</a>
 </body>
 </html>

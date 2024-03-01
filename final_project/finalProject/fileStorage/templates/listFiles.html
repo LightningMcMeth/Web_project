@@ -10,18 +10,21 @@
 <body>
     <h2>List of files</h2>
     <ul>
-        {% for file in files %}
-            <li>
-                {{ file.name }} --->>> file description {{ file.description }}
+    {% for file in files %}
+        <li>
+            <span class="file-name">{{ file.name }}</span>{{ file.description }}
+                <a href="{% url 'downloadFile' file.name %}">
+                    <button>Download</button>
+                </a>
                 <a href="{% url 'updateMetadata' file.name %}">
                     <button>Edit</button>
                 </a>
                 <a href="{% url 'deleteFile' file.name %}" onclick="return confirm('Are you sure you want to delete this file?');">
                     <button>Delete</button>
                 </a>
-            </li>
-        {% endfor %}
+        </li>
+    {% endfor %}
     </ul>
-    <a href="{% url 'uploadFile' %}">Upload a file</a>
+    <a href="{% url 'uploadFile' %}" class="upload-button">Upload a file</a>
 </body>
 </html>

@@ -1,0 +1,14 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/listFiles.css' %}">
+</head>
+<body>
+<h1>Oh no!! Error: {{ errMsg }}</h1>
+<a href="{% url 'getFileNames' %}">Back to file list</a>
+</body>
+</html>

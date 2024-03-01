@@ -1,5 +1,5 @@
 const defaultMetadata = require('../models/defaultMetadata');
-const createdefaultMetadata = require('../gamer/createdefaultMetadata');
+//const createdefaultMetadata = require('../gamer/createdefaultMetadata');
 
 async function listAllMetadataController(req, res) {
     try {

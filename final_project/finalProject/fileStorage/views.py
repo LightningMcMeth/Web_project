@@ -17,9 +17,11 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 def storeKey(fileName, key):
+    keyFile = os.path.join(settings.BASE_DIR, 'fileStorage/keys/encryptionKeys.json')
     try:
-        with open("fileStorage/keys/encryptionKeys.json", "r") as file:
+        with open(keyFile, "r") as file:
             keys = json.load(file)
     except (FileNotFoundError, json.JSONDecodeError) as err:
         keys = {}
@@ -27,13 +29,14 @@ def storeKey(fileName, key):
 
     keys[fileName] = key.decode()
 
-    with open("fileStorage/keys/encryptionKeys.json", "w") as file:
+    with open(keyFile, "w") as file:
         json.dump(keys, file)
 
 
 def retrieveKey(fileName):
+    keyFile = os.path.join(settings.BASE_DIR, 'fileStorage/keys/encryptionKeys.json')
     try:
-        with open("fileStorage/keys/encryptionKeys.json", "r") as file:
+        with open(keyFile, "r") as file:
             keys = json.load(file)
 
         if fileName in keys:
@@ -144,7 +147,6 @@ def getListOfFileNames(request):
         nameWithoutExtension = os.path.splitext(file)[0]
         try:
             response = requests.get(f'http://localhost:3500/md/getByName/{nameWithoutExtension}')
-            #if response.status_code == 200:
             metadataList = response.json()
 
             if metadataList:
@@ -171,8 +173,6 @@ def updateFileMetadata(request, fileName):
         try:
             response = requests.put(f'http://localhost:3500/md/updateByName/{nameWithoutExtension}', json=data)
         except RequestException as err:
-
-        #if response.status_code != 200:
 
                 errMsg = f"Couldn't upload file metadata: {str(err)}"
                 logger.error(errMsg)
@@ -218,7 +218,6 @@ def deleteFile(request, fileName):
         response = requests.delete(f'http://localhost:3500/md/deleteByName/{nameWithoutExtension}')
     except RequestException as err:
 
-    #if response.status_code != 200:
         errMsg = f"Couldn't delete file metadata: {str(err)}"
         logger.error(errMsg)
         return redirect(reverse('customError', kwargs={'errMsg': errMsg}))

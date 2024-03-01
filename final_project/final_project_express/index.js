@@ -32,8 +32,8 @@ function originFunction(origin, callback) {
         callback(new Error("Not allowed by CORS"));
     }
 }
+
 app.use(cors(corsOptions));
-//app.use(cors({ origin: false }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.set('view engine', 'pug');

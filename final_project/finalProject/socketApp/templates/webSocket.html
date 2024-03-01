@@ -7,6 +7,96 @@
     <link rel="stylesheet" type="text/css" href="{% static 'styles/index.css' %}">
     <meta charset="UTF-8">
     <title>Websocket stuff</title>
+    <style>
+
+        button {
+    padding: 10px 20px;
+    background-color: #ff5fcf;
+    border: none;
+    color: #000000;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1aaabd;
+}
+
+#messages p {
+    padding: 5px;
+    margin: 0;
+    background-color: #1dd3b1;
+    border: 1px solid #ddd;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+@media (max-width: 800px) {
+    #messages p, button {
+        background-color: #8348de;
+        color: black;
+        font-size: 30px;
+    }
+
+    input[type="text"] {
+        background-color: #e7e7e7;
+    }
+}
+
+button:active {
+    background-color: #1b3180;
+    transform: translateX(10px);
+}
+
+    </style>
+    <script>
+        const socket = new WebSocket("ws://127.0.0.1:8000/ws");
+
+
+function sendMessage() {
+
+    const messageInput = document.getElementById('messageInput');
+    const message = messageInput.value;
+
+    console.log("sending message: " + message);
+    socket.send(message);
+
+    const messagesDiv = document.getElementById('messages');
+    messagesDiv.innerHTML += `<p>Sent: ${message}</p><br>`;
+    messageInput.value = '';
+}
+
+
+socket.onopen = function (e ) {
+    console.log('connection opened!');
+}
+
+
+socket.onmessage = function(e) {
+
+    console.log("message from server: " + e.data);
+
+    const messagesDiv = document.getElementById('messages');
+    messagesDiv.innerHTML += `<p>Received: ${e.data}</p><br>`;
+};
+
+
+socket.onclose = function(e) {
+    console.error('Socket closed unexpectedly :(');
+};
+    </script>
 </head>
 <body>
     <h3><a href="{% url 'renderInfo' %}">Take me to documentation!!!</a></h3>

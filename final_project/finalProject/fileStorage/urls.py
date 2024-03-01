@@ -10,7 +10,7 @@ urlpatterns = [
     path('err/<str:errMsg>', views.customError, name='customError'),
     path('updateMetadata/<str:fileName>/', views.updateFileMetadata, name='updateMetadata'),
     path('deleteFile/<str:fileName>/', views.deleteFile, name='deleteFile'),
-    path('downloadFile/<str:fileName>', views.downloadFile, name='downloadFile')
+    path('downloadFile/<str:fileName>', views.downloadFile, name='downloadFile'),
 ]
 
 if settings.DEBUG:

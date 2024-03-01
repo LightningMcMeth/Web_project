@@ -7,6 +7,100 @@
     <title>Update file metadata</title>
     <link rel="stylesheet" type="text/css" href="{% static 'styles/updateUploadMetadata.css' %}">
 </head>
+<style>
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #ffffff;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.custom-file-upload:hover {
+    background-color: #0056b3;
+}
+
+#file {
+    display: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h2, h3 {
+    color: #333;
+}
+
+p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+strong {
+    color: #000;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+textarea {
+    width: 100%;
+    max-width: 500px;
+    height: 100px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
+
+</style>
+
+
 <body>
     <h2>Update Metadata for {{ fileName }}</h2>
     {% if metadata %}
